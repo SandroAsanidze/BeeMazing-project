@@ -26,10 +26,11 @@ export class RegistrationComponent {
     onSubmit(){
       console.log(this.registrationForm.value);
       this.registrationForm.reset();
+      this.router.navigate(['home']);
     }
 
     backToHome() {
       this.authService.hideEverything = false;
-      this.router.navigate(['login']);
+      this.router.navigate(['home']);
     }
 }
