@@ -59,6 +59,22 @@
     color: white;
     cursor: pointer;
   }
+  .dropdown-div {
+    display: flex;
+    width: 75px;
+    justify-content: space-between;
+    align-items: center;
+    .fa-chevron-down {
+        cursor: pointer;
+        color: rgb(17,17,19);
+        &:hover {
+            color: white;
+        }
+    }
+    .active {
+        color: rgb(3, 28, 255);
+    }
+  }
   .dropdown {
     opacity: 0;
     position: absolute;

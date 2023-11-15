@@ -10,7 +10,10 @@
                 <li>Blog</li>
                 <li>Help</li>
                 <li *ngIf="checkIsLogged()"><i class="fa-solid fa-cart-shopping"></i></li>
-                <li *ngIf="checkIsLogged()" (click)="toggleDropdown()" class="dropdown-container">{{ name }}</li>
+                <div *ngIf="checkIsLogged()" class="dropdown-div">
+                    <li (click)="toggleDropdown()" class="dropdown-container">{{ name }}</li>
+                    <i [class.active]="showDropdown" (click)="toggleDropdown()" class="fa-solid fa-chevron-down"></i>
+                </div>
                 <div *ngIf="showDropdown" class="dropdown">
                   <ul>
                     <li (click)="deleteAccount(id)">Delete Account</li>

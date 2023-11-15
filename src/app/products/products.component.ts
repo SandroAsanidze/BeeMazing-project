@@ -22,7 +22,7 @@ export class ProductsComponent implements OnInit {
   }
 
   currentPage: number = 1;
-  itemsPerPage: number = 10; 
+  itemsPerPage: number = 6; 
   totalItems: number = 0;
 
   onePageData() {
