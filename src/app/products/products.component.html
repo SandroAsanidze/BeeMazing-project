@@ -1,12 +1,18 @@
-<div class="product-details" *ngFor="let product of onePageData()">
-    <div class="product-image-container">
-        <img class="product-image" [src]="product.image" alt="Product Image">
-    </div>
-    <div class="product-info">
-      <h2 class="product-title">{{product.title}}</h2>
-      <p class="product-description">{{product.description | slice: 0: 200}}...</p>
-      <p class="product-price">{{product.price}} $</p>
-      <p class="product-rating">Count: {{product.rating.count}}</p>
+<div class="main-div">
+    <div class="product-details" *ngFor="let product of onePageData()">
+        <div class="product-image-container">
+            <img class="product-image" [src]="product.image" alt="Product Image">
+        </div>
+        <div class="product-info">
+            <h2 class="product-title">{{product.title}}</h2>
+            <p class="product-description">{{product.description | slice: 0: 200}}...</p>
+            <p class="product-price">{{product.price}} $</p>
+            <p class="product-count">Count: {{product.rating.count}}</p>
+            <div class="btn-div">
+                <button (click)="addToCart()" class="cart-btn">Add to Cart</button>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+        </div>
     </div>
 </div>
 

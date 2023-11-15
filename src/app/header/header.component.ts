@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../auth/service/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -31,9 +31,11 @@ export class HeaderComponent implements OnInit {
     public logOut(){
         const confirmation = confirm(`Are you sure you want to log out ${localStorage.getItem('name')}?`);
         if (confirmation) {
+          this.scrollToTop();
           this.router.navigate(['home'])
           localStorage.removeItem('isLogged');
           localStorage.removeItem('name');
+          localStorage.removeItem('id');
         }
     }
 
@@ -45,8 +47,6 @@ export class HeaderComponent implements OnInit {
 
 
     public deleteAccount(id:any) {
-        const route = this.router.url;
-        const segments = route.split('/');
         const confirmation = confirm('Are you sure you want to Delete Account?');
         if (confirmation) {
           this.authService.deleteCustomer(id).subscribe();
@@ -55,5 +55,12 @@ export class HeaderComponent implements OnInit {
           localStorage.removeItem('name');
           this.showDropdown = false;
         }
+    }
+
+    scrollToBottom() {
+      window.scroll({ top: 1000, left: 0, behavior: 'smooth' });
+    }
+    scrollToTop() {
+      window.scroll({ top: 0, left: 0, behavior: 'smooth' });
     }
 }

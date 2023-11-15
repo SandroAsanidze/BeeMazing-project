@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductsService {
 
-  private _url = 'https://fakestoreapi.com/products';
+  private _url = 'http://localhost:3000/products';
   constructor(private http:HttpClient) {}
 
   public getProducts():Observable<any[]> {

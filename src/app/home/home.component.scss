@@ -89,6 +89,7 @@
     align-items: center;
     justify-content: center;
     color: white;
+    margin-bottom: 180px;
     h1 {
         margin-bottom: 80px;
         font-size: 55px;
@@ -103,6 +104,80 @@
         .img-slider {
             width: 120px;
             height: 100px;
+        }
+    }
+}
+
+.blog-div {
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 20%;
+    height: 500px;
+    background: rgb(40,40,42);
+    background: linear-gradient(90deg, rgba(40,40,42,1) 0%, rgba(24,24,26,1) 53%, rgba(40,40,42,1) 99%);
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    .fa-shield-heart {
+        font-size: 60px;
+        color: red;
+    }
+    h2 {
+        color: red;
+        font-size: 40px;
+    }
+    h3 {
+        color: rgb(199, 199, 199);
+        font-size: 35px;
+    }
+    p {
+        color: gray;
+    }
+    .app-btn {
+        width: 500px;
+        display: flex;
+        justify-content: space-between;
+        .apple-btn {
+            width: 220px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background-color: #00c3ff;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 10px 30px 10px rgba(34, 33, 33, 0.363);
+            cursor: pointer;
+            .fa-apple {
+                font-size: 25px;
+            }
+            p {
+                color: white;
+                font-size: 17px;
+            }
+        }
+        .android-btn {
+            width: 220px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background-color: #9905ee;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 10px 30px 10px rgba(34, 33, 33, 0.363);
+            .fa-android {
+                font-size: 25px;
+            }
+            p {
+                color: white;
+                font-size: 17px;
+            }
         }
     }
 }

@@ -1,20 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from './service/products.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule],
-  providers:[ProductsService],
+  imports: [CommonModule,HttpClientModule],
+  providers:[ProductsService,HttpClient],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
 export class ProductsComponent implements OnInit {
 
   products: any[]=[];
-  constructor(private productService:ProductsService, private route: ActivatedRoute){}
+  errorMessage:string='';
+
+  constructor(
+    private productService:ProductsService, 
+    private route: ActivatedRoute,
+    public cdr:ChangeDetectorRef,
+    private router:Router
+  ){}
   ngOnInit(): void {
     this.productService.getProducts().subscribe(data => {
       this.products = data;
@@ -22,7 +30,7 @@ export class ProductsComponent implements OnInit {
   }
 
   currentPage: number = 1;
-  itemsPerPage: number = 6; 
+  itemsPerPage: number = 8; 
   totalItems: number = 0;
 
   onePageData() {
@@ -58,5 +66,14 @@ export class ProductsComponent implements OnInit {
 
   scrollToTop() {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+  }
+
+  addToCart() {
+    if(localStorage.getItem('isLogged')) {
+      console.log(100);
+    }
+    else {
+      this.router.navigate(['login'])
+    }
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../auth/service/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -32,11 +32,19 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('name',item.firstName);
               localStorage.setItem('id',item.id);
               this.router.navigate(['home']);
+              this.scrollToTop()
             }
             else {
               this.warningMessage = 'Invalid email or password.';
             }
           });
         })
+    }
+
+    createAcc() {
+      this.router.navigate(['registration'])
+    }
+    scrollToTop() {
+      window.scroll({ top: 0, left: 0, behavior: 'smooth' });
     }
 }

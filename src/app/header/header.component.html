@@ -1,13 +1,13 @@
 <div class="header">
     <div class="logo">
-        <i routerLink="home" class="fa-solid fa-dice-d20"></i>
-        <h2 routerLink="home">Bee<span>Mazing</span></h2>
+        <i (click)="scrollToTop()" routerLink="home" class="fa-solid fa-dice-d20"></i>
+        <h2 (click)="scrollToTop()"  routerLink="home">Bee<span>Mazing</span></h2>
     </div>
     <div class="navigation">
         <nav>
             <ul class="nav-ul">
                 <li routerLink="products">Products</li>
-                <li>Blog</li>
+                <li (click)="scrollToBottom()">Blog</li>
                 <li>Help</li>
                 <li *ngIf="checkIsLogged()"><i class="fa-solid fa-cart-shopping"></i></li>
                 <div *ngIf="checkIsLogged()" class="dropdown-div">

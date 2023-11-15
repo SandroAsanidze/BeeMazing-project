@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from './auth/service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({

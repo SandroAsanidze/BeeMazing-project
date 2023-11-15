@@ -8,7 +8,7 @@ form {
     justify-content: center;
 
     div {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
   
       label {
         display: flex;
@@ -35,7 +35,7 @@ form {
     button {
       width: 30%;
       margin: 0 auto;
-      background-color: #2ecc71;
+      background-color: #2e4bcc;
       color: #fff;
       padding: 10px;
       border: none;
@@ -44,13 +44,20 @@ form {
       transition: background-color 0.3s ease;
   
       &:hover {
-        background-color: #27ae60;
+        background-color: #ffffff;
+        color: black;
       }
   
       &[disabled] {
         background-color: #bdc3c7;
         cursor: not-allowed;
       }
+    }
+    .create-acc {
+      background-color: green;
+      width: 50%;
+      border-radius: 10px;
+      margin-top: 20px;
     }
   }
   

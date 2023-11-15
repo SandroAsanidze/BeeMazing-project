@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { productsResolver } from './products/resolver/products.resolver';
+import { authGuard } from './auth/guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -17,10 +17,12 @@ export const routes: Routes = [
     },
     {
         path:'registration',
-        loadComponent: () => import('./registration/registration.component').then(c => c.RegistrationComponent)
+        loadComponent: () => import('./registration/registration.component').then(c => c.RegistrationComponent),
+        canActivate:[authGuard]
     },
     {
         path:'login',
-        loadComponent: () => import('./login/login.component').then(c => c.LoginComponent)
+        loadComponent: () => import('./login/login.component').then(c => c.LoginComponent),
+        canActivate:[authGuard]
     }
 ];
