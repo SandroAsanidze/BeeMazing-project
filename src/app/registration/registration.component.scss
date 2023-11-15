@@ -1,9 +1,19 @@
+.title {
+  position: absolute;
+  top: 160px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 40px;
+  color: white;
+}
 .form-div {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f4f4f4;
+  color: white;
+  background: rgb(17,17,19);
+  background: linear-gradient(90deg, rgba(17,17,19,1) 0%, rgba(30,30,32,1) 0%, rgba(52,52,54,1) 70%, rgba(44,44,47,1) 100%);
   .back-btn {
     position: absolute;
     top: 20px;

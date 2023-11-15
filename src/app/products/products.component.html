@@ -1,0 +1,17 @@
+<div class="product-details" *ngFor="let product of onePageData()">
+    <div class="product-image-container">
+        <img class="product-image" [src]="product.image" alt="Product Image">
+    </div>
+    <div class="product-info">
+      <h2 class="product-title">{{product.title}}</h2>
+      <p class="product-description">{{product.description | slice: 0: 200}}...</p>
+      <p class="product-price">{{product.price}} $</p>
+      <p class="product-rating">Count: {{product.rating.count}}</p>
+    </div>
+</div>
+
+<div class="pagination-div">
+    <ul class="pagination" *ngFor="let page of pageNumbers">
+        <li><a (click)="currentPage = page" [class.active]="currentPage === page" (click)="scrollToTop()">{{page}}</a></li>
+    </ul>
+</div>

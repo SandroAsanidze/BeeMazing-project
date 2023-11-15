@@ -23,14 +23,27 @@ export class RegistrationComponent {
       dob: ['', Validators.required]
     })
 
+    public addCustomer(info:any) {
+      this.authService.addCustomer(info).subscribe()
+    }
+
     onSubmit(){
-      console.log(this.registrationForm.value);
+      const formData:any = { 
+        firstName: this.registrationForm.get('firstName')?.value || '',
+        lastName: this.registrationForm.get('lastName')?.value || '',
+        email: this.registrationForm.get('email')?.value || '',
+        password: this.registrationForm.get('password')?.value || ''
+      };
+
+      this.addCustomer(formData);
+
       this.registrationForm.reset();
-      this.router.navigate(['home']);
+      this.router.navigate(['login']);
+      
     }
 
     backToHome() {
       this.authService.hideEverything = false;
-      this.router.navigate(['home']);
+      this.router.navigate(['login']);
     }
 }

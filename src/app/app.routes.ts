@@ -1,10 +1,15 @@
 import { Routes } from '@angular/router';
+import { productsResolver } from './products/resolver/products.resolver';
 
 export const routes: Routes = [
     {
         path:'',
         redirectTo:'home',
         pathMatch:'full'
+    },
+    {
+        path:'products',
+        loadComponent: () => import('./products/products.component').then(c => c.ProductsComponent)
     },
     {
         path:'home',

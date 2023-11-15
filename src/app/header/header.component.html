@@ -6,12 +6,19 @@
     <div class="navigation">
         <nav>
             <ul class="nav-ul">
-                <li>Products</li>
+                <li routerLink="products">Products</li>
                 <li>Blog</li>
                 <li>Help</li>
-                <li><i class="fa-solid fa-cart-shopping"></i></li>
-                <li routerLink="login"><i class="fa-regular fa-user"></i></li>
-                <li routerLink="registration" class="sign-up">Sign Up</li>
+                <li *ngIf="checkIsLogged()"><i class="fa-solid fa-cart-shopping"></i></li>
+                <li *ngIf="checkIsLogged()" (click)="toggleDropdown()" class="dropdown-container">{{ name }}</li>
+                <div *ngIf="showDropdown" class="dropdown">
+                  <ul>
+                    <li (click)="deleteAccount(id)">Delete Account</li>
+                  </ul>
+                </div>
+                <li *ngIf="!checkIsLogged()" routerLink="login"><i class="fa-regular fa-user"></i></li>
+                <li *ngIf="!checkIsLogged()" routerLink="registration" class="sign-up">Sign Up</li>
+                <li (click)="logOut()" *ngIf="checkIsLogged()">Log Out</li>
             </ul>
         </nav>
     </div>
