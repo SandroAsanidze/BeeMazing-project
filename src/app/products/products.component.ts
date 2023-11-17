@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductsService } from './service/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { CartService } from '../auth/service/cart.service';
+import { CartService } from '../cart/service/cart.service';
 
 @Component({
   selector: 'app-products',

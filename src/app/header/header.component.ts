@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../auth/service/auth.service';
 import { ProductsService } from '../products/service/products.service';
-import { CartService } from '../auth/service/cart.service';
+import { CartService } from '../cart/service/cart.service';
 
 @Component({
   selector: 'app-header',
