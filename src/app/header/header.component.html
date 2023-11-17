@@ -9,7 +9,10 @@
                 <li routerLink="products">Products</li>
                 <li (click)="scrollToBottom()">Blog</li>
                 <li>Help</li>
-                <li *ngIf="checkIsLogged()"><i class="fa-solid fa-cart-shopping"></i></li>
+                <div class="cart" *ngIf="checkIsLogged()">
+                    <li routerLink="cart"><i class="fa-solid fa-cart-shopping"></i></li>
+                    <div class="cart-count">{{totalItem}}</div>
+                </div>
                 <div *ngIf="checkIsLogged()" class="dropdown-div">
                     <li (click)="toggleDropdown()" class="dropdown-container">{{ name }}</li>
                     <i [class.active]="showDropdown" (click)="toggleDropdown()" class="fa-solid fa-chevron-down"></i>

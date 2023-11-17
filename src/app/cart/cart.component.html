@@ -1,0 +1,45 @@
+<div class="cart" *ngIf="products.length!=0">
+    <table>
+      <thead>
+        <tr>
+          <th>S.N</th>
+          <th>Product Name</th>
+          <th>Product Image</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products; let i = index">
+          <td>{{i+1}}</td>
+          <td>{{product.title}}</td>
+          <td><img  [src]="product.image" alt="Product"></td>
+          <td>{{product.description}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.quantity}}</td>
+          <td>{{product.total}}</td>
+          <td>
+            <button (click)="removeProduct(product)"><i class="fa-regular fa-trash-can"></i></button>
+          </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="btn-table">
+        <button (click)="emptyCart()">Empty Cart</button>
+        <button class="shop-more" (click)="returnToShop()">Shop More</button>
+        <h2>Total Price: {{grandTotal | number: '1.2-2'}}</h2>
+    </div>
+</div>
+
+<div class="cart-null" *ngIf="products.length==0">
+    <h2>My Cart</h2>
+    <div class="empty-cart">
+        <i class="fa-solid fa-cart-plus"></i>
+        <h3>Your Cart is <span>Empty!</span></h3>
+        <p>Must add items on the cart before you proceed to check out</p>
+        <button (click)="returnToShop()" class="shop-now">Return to Shop</button>
+    </div>
+</div>

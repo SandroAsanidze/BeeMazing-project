@@ -32,6 +32,22 @@
             width: 80%;
             display: flex;
             justify-content: space-between;
+            .cart {
+                position: relative;
+                .cart-count {
+                    width: 15px;
+                    height: 15px;
+                    font-size: 12px;
+                    border-radius: 4px;
+                    background-color: red;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: absolute;
+                    top: 10%;
+                    left: 120%;
+                }
+            }
             li {
                 display: flex;
                 align-items: center;

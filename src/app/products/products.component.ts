@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductsService } from './service/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CartService } from '../auth/service/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -21,12 +22,17 @@ export class ProductsComponent implements OnInit {
     private productService:ProductsService, 
     private route: ActivatedRoute,
     public cdr:ChangeDetectorRef,
-    private router:Router
+    private router:Router,
+    private cartService:CartService
   ){}
   ngOnInit(): void {
     this.productService.getProducts().subscribe(data => {
       this.products = data;
-    })
+
+      this.products.forEach((a:any) => {
+        Object.assign(a,{quantity:1,total:a.price})
+      })
+    })   
   }
 
   currentPage: number = 1;
@@ -68,9 +74,9 @@ export class ProductsComponent implements OnInit {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
   }
 
-  addToCart() {
+  addToCart(product:any) {
     if(localStorage.getItem('isLogged')) {
-      console.log(100);
+      this.cartService.addToCart(product);
     }
     else {
       this.router.navigate(['login'])
