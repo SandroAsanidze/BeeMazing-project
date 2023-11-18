@@ -54,6 +54,11 @@
           margin-bottom: 10px;
           cursor: pointer;
           border: none;
+          &:hover {
+            background-color: rgb(255, 0, 55);
+            color: white;
+            transition: background-color 0.5s, color 0.5s;
+          }
         }
         .buy-btn {
           background-color: rgb(0, 110, 255);
@@ -63,6 +68,15 @@
           height: 40px;
           cursor: pointer;
           border: none;
+          &:disabled {
+            background-color: gray;
+            cursor: no-drop;
+          }
+          &:hover {
+            background-color: rgb(0, 255, 149);
+            color: white;
+            transition: background-color 0.5s, color 0.5s;
+          }
         }
       }
     }
@@ -145,20 +159,20 @@
       }
     }
   }
-  // .main-div {
-  //   .product-details {
-  //     height: 660px;
-  //     display: flex;
-  //     flex-direction: column;
-  //     justify-content: space-between;
-  //     .product-info {
-  //       .product-description{
-  //         font-size: 13px;
-  //       }
-  //       .product-price {
-  //         font-size: 25px;
-  //       }
-  //     }
-  //   }
-  // }
+}
+
+.productTitle {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: bold;
 }

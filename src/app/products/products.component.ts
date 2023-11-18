@@ -4,11 +4,13 @@ import { ProductsService } from './service/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CartService } from '../cart/service/cart.service';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { json } from 'node:stream/consumers';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule,HttpClientModule],
+  imports: [CommonModule,HttpClientModule,ReactiveFormsModule],
   providers:[ProductsService,HttpClient],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
@@ -17,13 +19,14 @@ export class ProductsComponent implements OnInit {
 
   products: any[]=[];
   errorMessage:string='';
+  isLogged:boolean=false;
+
 
   constructor(
     private productService:ProductsService, 
-    private route: ActivatedRoute,
     public cdr:ChangeDetectorRef,
-    private router:Router,
-    private cartService:CartService
+    private cartService:CartService,
+    private formBuilder:FormBuilder
   ){}
   ngOnInit(): void {
     this.productService.getProducts().subscribe(data => {
@@ -32,7 +35,25 @@ export class ProductsComponent implements OnInit {
       this.products.forEach((a:any) => {
         Object.assign(a,{quantity:1,total:a.price})
       })
-    })   
+    })
+
+    const isLogged = localStorage.getItem('isLogged');
+    if(isLogged === 'true'){
+      this.isLogged = true;
+    }
+
+  }
+
+  public paymentForm = this.formBuilder.group({
+    name:['',[Validators.required,Validators.pattern('^[a-zA-Z]+$')]],
+    cardNumber:['',[Validators.required]],
+    expiry:['',[Validators.required]],
+    cvc:['',[Validators.required]]
+  })
+
+  Submit() {
+    const alertion = alert('Successfull Payment');
+    this.paymentForm.reset();
   }
 
   currentPage: number = 1;
@@ -76,10 +97,30 @@ export class ProductsComponent implements OnInit {
 
   addToCart(product:any) {
     if(localStorage.getItem('isLogged')) {
+      localStorage.setItem('product','product');
       this.cartService.addToCart(product);
     }
     else {
       const information = alert('You must be logged into your account');
+    }
+  }
+  productTitle:string ='';
+
+  openModal(product:any){
+    const modelDiv = document.getElementById('buyModal');
+    if(modelDiv != null) {
+      modelDiv.style.display = 'block';
+    }
+
+    localStorage.setItem('product',product.title);
+    this.productTitle = localStorage.getItem('product') || '';
+    
+  }
+
+  closeModal(){
+    const modelDiv = document.getElementById('buyModal');
+    if(modelDiv != null) {
+      modelDiv.style.display = 'none';
     }
   }
 }
