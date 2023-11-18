@@ -12,7 +12,6 @@
     background: linear-gradient(90deg, rgba(35,22,48,1) 48%, rgba(96,68,126,1) 90%, rgba(122,92,152,1) 100%);
     position: relative;
     .market-div {
-        margin-left: 150px;
         h1 {
             font-size: 70px;
             color: white;
@@ -38,7 +37,7 @@
     }
 
     button {
-        margin: 20px 0 40px 150px;
+        margin: 20px 0 40px 0px;
         background-color: #007bff;
         color: white;
         padding: 10px 20px;
@@ -177,6 +176,128 @@
             p {
                 color: white;
                 font-size: 17px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1350px) {
+    .market {
+        .nike-products {
+            top: 55%;
+        }
+    }
+}
+@media (max-width: 1115px) {
+    .market {
+        .nike-products {
+            display: none;
+        }
+    }
+    .blog-div  {
+        h3 {
+            font-size: 25px;
+        }
+    }
+}
+@media (max-width: 805px) {
+    .market-div {
+        margin: 0 auto;
+    }
+    .img {
+        display: none;
+    }
+    .blog-div  {
+        h3 {
+            font-size: 20px;
+        }
+        .app-btn {
+            flex-direction: column;
+            align-items: center;
+            .apple-btn {
+                margin-bottom: 20px;
+            }
+        }
+    }
+    .slider {
+        .slider-div {
+            width: 100%;
+            .img-slider {
+                width: 80px;
+            }
+        }
+    }
+}
+@media (max-width: 645px) {
+    .blog-div  {
+        h2 {
+            font-size: 25px;
+        }
+        h3 {
+            font-size: 15px;
+        }
+        p {
+            font-size: 12px;
+        }
+        .app-btn {
+            width: 50%;
+            .apple-btn {
+                height: 50px;
+            }
+            .android-btn {
+                height: 50px;
+            }
+        }
+    }
+    .slider {
+        margin-bottom: 40px;
+        .slider-div {
+            width: 90%;
+            .img-slider {
+                width: 50px;
+            }
+        }
+    }
+}
+@media (max-width: 490px) {
+    .market {
+        .market-div {
+            h1 {
+                font-size: 35px;
+            }
+            h2 {
+                font-size: 30px;
+            }
+            .paragraph {
+                p {
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+    .blog-div  {
+        text-align: center;
+        .app-btn {
+            .apple-btn {
+                width: 150px;
+                height: 40px;
+            }
+            .android-btn {
+                width: 150px;
+                height: 40px;
+            }
+        }
+    }
+    .slider {
+        margin-bottom: 40px;
+        h1 {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+        .slider-div {
+            flex-wrap: wrap;
+            .img-slider {
+                width: 60px;
             }
         }
     }

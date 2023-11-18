@@ -99,3 +99,66 @@
 .pagination-div .pagination li a.active {
   background-color: #0a0346;
 }
+
+@media (max-width: 816px) {
+  .main-div {
+    justify-content: center;
+  }
+}
+@media (max-width: 490px) {
+  .main-div {
+    width: 100%;
+    justify-content: space-around;
+    .product-details {
+      height: 430px;
+      width: 45%;
+      .product-image-container {
+        width: 100%;
+        height: 120px;
+        .product-image {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .product-info {
+        .product-title {
+          font-size: 12px;
+        }
+        .product-description{
+          font-size: 12px;
+        }
+        .product-price {
+          font-size: 20px;
+        }
+        .product-count {
+          font-size: 12px;
+        }
+        .btn-div {
+          .cart-btn {
+            height: 20px;
+            margin-bottom: 5px;
+          }
+          .buy-btn {
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+  // .main-div {
+  //   .product-details {
+  //     height: 660px;
+  //     display: flex;
+  //     flex-direction: column;
+  //     justify-content: space-between;
+  //     .product-info {
+  //       .product-description{
+  //         font-size: 13px;
+  //       }
+  //       .product-price {
+  //         font-size: 25px;
+  //       }
+  //     }
+  //   }
+  // }
+}

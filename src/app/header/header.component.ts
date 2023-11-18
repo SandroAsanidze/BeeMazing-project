@@ -4,11 +4,12 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../auth/service/auth.service';
 import { ProductsService } from '../products/service/products.service';
 import { CartService } from '../cart/service/cart.service';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule,RouterModule,ReactiveFormsModule],
   providers:[ProductsService],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
@@ -18,7 +19,8 @@ export class HeaderComponent implements OnInit {
       private router:Router,
       public authService:AuthService,
       public productService:ProductsService,
-      public cartService:CartService
+      public cartService:CartService,
+      private formBuilder:FormBuilder
     ){}
     name:string ='';
     id:string='';
@@ -77,4 +79,58 @@ export class HeaderComponent implements OnInit {
     scrollToTop() {
       window.scroll({ top: 0, left: 0, behavior: 'smooth' });
     }
+
+
+    openModal(){
+      const modelDiv = document.getElementById('myModal');
+      if(modelDiv != null) {
+        modelDiv.style.display = 'block';
+      }
+    }
+  
+    closeModal(){
+      const modelDiv = document.getElementById('myModal');
+      if(modelDiv != null) {
+        modelDiv.style.display = 'none';
+      }
+    }
+
+
+    public loginForm = this.formBuilder.group({
+      email:['',Validators.required],
+      password:['',Validators.required]
+    })
+
+    warningMessage: string = '';
+    
+    onSubmit(){
+      this.authService.getInfo().subscribe(
+        (data) => {
+          data.forEach((item: { firstName:string;email: string; password: string;id:any }) => {
+            if(this.loginForm.get('email')?.value === item.email && this.loginForm.get('password')?.value === item.password) {
+              localStorage.setItem('isLogged','true');
+              localStorage.setItem('name',item.firstName);
+              localStorage.setItem('id',item.id);
+              this.router.navigate(['home']);
+              this.scrollToTop()
+            }
+            else {
+              this.warningMessage = 'Invalid email or password.';
+            }
+          });
+        })
+    }
+
+    createAcc() {
+      let modelDiv = document.getElementById('myModal')?.style.display;
+      modelDiv = 'none';
+      this.router.navigate(['registration'])
+    }
+
+
+  isExpanded$: boolean = false;
+
+  open() {
+    this.isExpanded$ = !this.isExpanded$;
+  }
 }

@@ -44,6 +44,6 @@ export class RegistrationComponent {
 
     backToHome() {
       this.authService.hideEverything = false;
-      this.router.navigate(['login']);
+      this.router.navigate(['home']);
     }
 }

@@ -3,9 +3,9 @@
         <i (click)="scrollToTop()" routerLink="home" class="fa-solid fa-dice-d20"></i>
         <h2 (click)="scrollToTop()"  routerLink="home">Bee<span>Mazing</span></h2>
     </div>
-    <div class="navigation">
-        <nav>
-            <ul class="nav-ul">
+    <div class="navigation nav-body">
+        <nav class="navv" [ngClass]="{'navv_true': isExpanded$ === true }">
+            <ul class="nav-ul" [ngClass]="{'is_expanded': isExpanded$ === true }">
                 <li routerLink="products">Products</li>
                 <li (click)="scrollToBottom()">Blog</li>
                 <li>Help</li>
@@ -22,10 +22,47 @@
                     <li (click)="deleteAccount(id)">Delete Account</li>
                   </ul>
                 </div>
-                <li *ngIf="!checkIsLogged()" routerLink="login"><i class="fa-regular fa-user"></i></li>
+                <li (click)="openModal()" data-bs-toggle="modal" data-bs-target="#myModal" *ngIf="!checkIsLogged()"><i class="fa-regular fa-user"></i></li>
                 <li *ngIf="!checkIsLogged()" routerLink="registration" class="sign-up">Sign Up</li>
                 <li (click)="logOut()" *ngIf="checkIsLogged()">Log Out</li>
             </ul>
         </nav>
+    </div>
+    <div class="navBar" (click)="open()"><i class="fa-solid fa-bars"></i></div>
+</div>
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <h4 class="modal-title">Log In</h4>
+            <div>
+              <label for="email">Email:</label>
+              <input type="text" id="email" formControlName="email">
+              <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+                Email is required
+              </div>
+            </div>
+          
+            <div>
+              <label for="password">Password:</label>
+              <input type="password" id="password" formControlName="password">
+              <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                Password is required
+              </div>
+            </div>
+
+            <div class="text-danger" *ngIf="warningMessage">{{ warningMessage }}</div>
+
+            <button type="submit" data-bs-dismiss="modal" [disabled]="loginForm.invalid">Log In</button>
+            <button (click)="createAcc()" data-bs-dismiss="modal" class="create-acc">Create new account</button>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
 </div>

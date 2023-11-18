@@ -79,7 +79,7 @@ export class ProductsComponent implements OnInit {
       this.cartService.addToCart(product);
     }
     else {
-      this.router.navigate(['login'])
+      const information = alert('You must be logged into your account');
     }
   }
 }
