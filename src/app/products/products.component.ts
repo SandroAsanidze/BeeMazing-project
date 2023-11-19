@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from './service/products.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CartService } from '../cart/service/cart.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -10,7 +10,7 @@ import { json } from 'node:stream/consumers';
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule,HttpClientModule,ReactiveFormsModule],
+  imports: [CommonModule,HttpClientModule,ReactiveFormsModule,RouterModule],
   providers:[ProductsService,HttpClient],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'

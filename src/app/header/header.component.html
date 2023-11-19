@@ -32,37 +32,37 @@
 </div>
 
 <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <h4 class="modal-title">Log In</h4>
-            <div>
-              <label for="email">Email:</label>
-              <input type="text" id="email" formControlName="email">
-              <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
-                Email is required
-              </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h4 class="modal-title">Log In</h4>
+          <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" formControlName="email">
+            <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+              Email is required
             </div>
+          </div>
           
-            <div>
-              <label for="password">Password:</label>
-              <input type="password" id="password" formControlName="password">
-              <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-                Password is required
-              </div>
+          <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" formControlName="password">
+            <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+              Password is required
             </div>
+          </div>
 
-            <div class="text-danger" *ngIf="warningMessage">{{ warningMessage }}</div>
-
-            <button type="submit" data-bs-dismiss="modal" [disabled]="loginForm.invalid">Log In</button>
-            <button (click)="createAcc()" data-bs-dismiss="modal" class="create-acc">Create new account</button>
+          <p class="text-danger" *ngIf="warningMessage">{{warningMessage}}</p>
+            
+          <button type="submit" data-bs-dismiss="modal">Log In</button>
+          <button (click)="createAcc()" data-bs-dismiss="modal" class="create-acc">Create new account</button>
         </form>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
-</div>
+  </div>

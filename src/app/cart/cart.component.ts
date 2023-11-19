@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from './service/cart.service';
 import { Router } from '@angular/router';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -35,6 +35,7 @@ export class CartComponent implements OnInit {
   returnToShop() {
     this.router.navigate(['products']);
   }
+
 
   public paymentForm = this.formBuilder.group({
     name:['',[Validators.required,Validators.pattern('^[a-zA-Z]+$')]],

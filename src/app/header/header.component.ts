@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../auth/service/auth.service';
@@ -31,7 +31,8 @@ export class HeaderComponent implements OnInit {
 
       this.cartService.getProducts().subscribe(data => {
         this.totalItem = data.length;
-      })
+      })     
+      
     }
 
     public checkIsLogged() {
@@ -101,8 +102,8 @@ export class HeaderComponent implements OnInit {
       password:['',Validators.required]
     })
 
-    warningMessage: string = '';
-    
+    warningMessage:string=''
+
     onSubmit(){
       this.authService.getInfo().subscribe(
         (data) => {
@@ -112,14 +113,15 @@ export class HeaderComponent implements OnInit {
               localStorage.setItem('name',item.firstName);
               localStorage.setItem('id',item.id);
               this.router.navigate(['home']);
-              this.scrollToTop()
+              this.scrollToTop();
             }
             else {
-              this.warningMessage = 'Invalid email or password.';
+              this.warningMessage = 'Invalid Email or Password';
             }
           });
         })
     }
+
 
     createAcc() {
       let modelDiv = document.getElementById('myModal')?.style.display;
