@@ -15,4 +15,8 @@ export class ProductsService {
   public getProducts():Observable<any[]> {
     return this.http.get<any[]>(this._url);
   }
+
+  public getSingleProduct(id:number):Observable<any> {
+    return this.http.get<any>(`${this._url}/${id}`);
+  }
 }
