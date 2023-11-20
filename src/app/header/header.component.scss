@@ -150,7 +150,16 @@ form {
       margin-bottom: 5px;
       font-weight: bold;
     }
-  
+    .password-field {
+      position: relative;
+      .fa-eye,.fa-eye-slash {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: black
+      }
+    }
     input {
       width: 100%;
       padding: 8px;

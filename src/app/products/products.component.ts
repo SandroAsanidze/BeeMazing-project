@@ -97,7 +97,6 @@ export class ProductsComponent implements OnInit {
 
   addToCart(product:any) {
     if(localStorage.getItem('isLogged')) {
-      localStorage.setItem('product','product');
       this.cartService.addToCart(product);
     }
     else {

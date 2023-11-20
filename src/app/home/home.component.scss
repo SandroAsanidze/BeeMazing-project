@@ -150,6 +150,14 @@
             color: white;
             box-shadow: 10px 30px 10px rgba(34, 33, 33, 0.363);
             cursor: pointer;
+            .a-tag {
+                color: white;
+                transition: color 0.5s;
+                &:hover {
+                    color: #000000;
+                    transition: color 0.5s;
+                }
+            }
             .fa-apple {
                 font-size: 25px;
             }
@@ -170,6 +178,14 @@
             color: white;
             cursor: pointer;
             box-shadow: 10px 30px 10px rgba(34, 33, 33, 0.363);
+            .a-tag {
+                color: white;
+                transition: color 0.5s;
+                &:hover {
+                    color: #000000;
+                    transition: color 0.5s;
+                }
+            }
             .fa-android {
                 font-size: 25px;
             }

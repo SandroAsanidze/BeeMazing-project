@@ -135,4 +135,10 @@ export class HeaderComponent implements OnInit {
   open() {
     this.isExpanded$ = !this.isExpanded$;
   }
+
+  showPassword = false;
+
+  changeType() {
+    this.showPassword = !this.showPassword;
+  }
 }

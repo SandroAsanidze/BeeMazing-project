@@ -23,6 +23,8 @@ export class ProductDetailsComponent implements OnInit{
     const route = this.router.url;
     const segments = route.split('/');
     const id = Number(segments[segments.length - 1]);
+    console.log(segments);
+    
     
     this.currentPath = segments[1];
 
