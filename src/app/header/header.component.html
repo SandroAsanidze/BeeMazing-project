@@ -27,7 +27,7 @@
                 </div>
                 <li (click)="openModal()" data-bs-toggle="modal" data-bs-target="#myModal" *ngIf="!checkIsLogged()"><i class="fa-regular fa-user"></i></li>
                 <li *ngIf="!checkIsLogged()" routerLink="registration" class="sign-up">Sign Up</li>
-                <li (click)="logOut()" *ngIf="checkIsLogged()">Log Out</li>
+                <li (click)="logOut()" class="log-out" *ngIf="checkIsLogged()">Log Out</li>
             </ul>
         </nav>
     </div>

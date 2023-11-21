@@ -47,6 +47,12 @@
             width: 80%;
             display: flex;
             justify-content: space-between;
+            .log-out {
+              transition: font-size 0.5s;
+              &:hover {
+                font-size: 15px;
+              }
+            }
             .cart {
                 position: relative;
                 .cart-count {

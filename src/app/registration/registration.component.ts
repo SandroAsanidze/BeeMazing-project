@@ -38,7 +38,7 @@ export class RegistrationComponent {
       this.addCustomer(formData);
 
       this.registrationForm.reset();
-      this.router.navigate(['login']);
+      this.router.navigate(['home']);
       
     }
 
