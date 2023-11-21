@@ -32,5 +32,9 @@ export const routes: Routes = [
         path:'cart',
         loadComponent: () => import('./cart/cart.component').then(c => c.CartComponent),
         canActivate:[authGuard1]
+    },
+    {
+        path:'help',
+        loadComponent: () => import('./feedback/feedback.component').then(c => c.FeedbackComponent),
     }
 ];

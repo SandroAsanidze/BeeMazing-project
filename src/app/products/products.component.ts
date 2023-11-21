@@ -58,6 +58,7 @@ export class ProductsComponent implements OnInit {
   }
 
   filterByCategory() {
+    this.currentPage = 1;
     this.filterProducts();
   }
 

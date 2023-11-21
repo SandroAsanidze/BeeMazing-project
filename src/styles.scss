@@ -46,17 +46,14 @@ table {
 a {
 	text-decoration: none;
 }
+
 ::-webkit-scrollbar {
 	width: 8px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-	// background-color: #4271f4;
-	// background-color: #f8f8f8;
-	background-color: rgb(117, 0, 128);
+}
+::-webkit-scrollbar-thumb {
+	background-color: #e6e3e3;
 	border-radius: 6px; 
-  }
-  
-  ::-webkit-scrollbar-track {
+} 
+::-webkit-scrollbar-track {
 	background-color: #232325;
-  }
+}

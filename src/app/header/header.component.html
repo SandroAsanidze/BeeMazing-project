@@ -8,7 +8,7 @@
             <ul class="nav-ul" [ngClass]="{'is_expanded': isExpanded$ === true }">
                 <li routerLink="products">Products</li>
                 <li (click)="scrollToBottom()">Blog</li>
-                <li>Help</li>
+                <li routerLink="help">Help</li>
                 <div class="cart" *ngIf="checkIsLogged()">
                     <li routerLink="cart"><i class="fa-solid fa-cart-shopping"></i></li>
                     <div class="cart-count">{{totalItem}}</div>

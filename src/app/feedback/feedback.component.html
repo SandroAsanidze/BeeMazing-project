@@ -1,0 +1,66 @@
+<form [formGroup]="feedbackForm" class="row g-3 form" (ngSubmit)="Submit()">
+    <h2 style="color: white; font-size: 25px;">Feedback: </h2>
+    <hr>
+    <div class="col-md-6">
+      <label class="form-label">Email</label>
+      <input type="text" class="form-control" formControlName="email">
+      <div class="text-danger" *ngIf="feedbackForm.get('email')?.invalid && (feedbackForm.get('email')?.dirty || feedbackForm.get('email')?.touched)">
+        Email is required
+      </div>
+      <div class="text-danger" *ngIf="feedbackForm.get('email')?.hasError('email')">
+        Please enter a valid email.
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Full Name</label>
+      <input type="text" class="form-control" formControlName="fullName">
+      <div class="text-danger" *ngIf="feedbackForm.get('fullName')?.invalid && feedbackForm.get('fullName')?.touched">
+        This field is required
+      </div>
+    </div>
+    <div class="col-12">
+      <label class="form-label">Address</label>
+      <input type="text" class="form-control" formControlName="address">
+      <div class="text-danger" *ngIf="feedbackForm.get('address')?.invalid && feedbackForm.get('address')?.touched">
+        Address is required
+      </div>
+    </div>
+    <div class="col-12">
+      <label class="form-label">Address 2</label>
+      <input type="text" class="form-control" formControlName="address2">
+      <div class="text-danger" *ngIf="feedbackForm.get('address2')?.invalid && feedbackForm.get('address2')?.touched">
+        Address 2 is required
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">City</label>
+      <input type="text" class="form-control" formControlName="city">
+      <div class="text-danger" *ngIf="feedbackForm.get('city')?.invalid && feedbackForm.get('city')?.touched">
+        City is required
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label class="form-label">State</label>
+      <input type="text" class="form-control" formControlName="state">
+      <div class="text-danger" *ngIf="feedbackForm.get('state')?.invalid && feedbackForm.get('state')?.touched">
+        State is required
+      </div>
+    </div>
+    <div class="col-md-2">
+      <label class="form-label">Zip</label>
+      <input type="text" class="form-control" formControlName="zip">
+      <div class="text-danger" *ngIf="feedbackForm.get('zip')?.invalid && feedbackForm.get('zip')?.touched">
+        Zip is required
+      </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Description</label>
+        <textarea class="form-control textarea" rows="3" formControlName="description" placeholder="Type here..."></textarea>
+        <div class="text-danger" *ngIf="feedbackForm.get('description')?.invalid && feedbackForm.get('description')?.touched">
+          Description is required
+        </div>
+    </div>
+    <div class="col-12" style="margin-bottom: 20px;">
+      <button type="submit" class="btn btn-primary" [disabled]="feedbackForm.invalid">Sent</button>
+    </div>
+  </form>
