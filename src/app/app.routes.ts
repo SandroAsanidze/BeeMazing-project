@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard, authGuard1 } from './auth/guards/auth.guard';
 import { productsResolver } from './products/resolver/products.resolver';
+import { detailsResolver } from './products/product-details/resolver/details.resolver';
 
 export const routes: Routes = [
     {
@@ -17,7 +18,10 @@ export const routes: Routes = [
     },
     {
         path:'products/:id',
-        loadComponent: () => import('./products/product-details/product-details.component').then(c => c.ProductDetailsComponent)
+        loadComponent: () => import('./products/product-details/product-details.component').then(c => c.ProductDetailsComponent),
+        resolve: {
+            resolveDetails:detailsResolver
+        }
     },
     {
         path:'home',

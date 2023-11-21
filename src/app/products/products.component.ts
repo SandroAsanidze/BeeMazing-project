@@ -10,7 +10,7 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angu
   selector: 'app-products',
   standalone: true,
   imports: [CommonModule,HttpClientModule,ReactiveFormsModule,RouterModule,FormsModule],
-  providers:[ProductsService,HttpClient],
+  providers:[ProductsService],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
@@ -48,9 +48,9 @@ export class ProductsComponent implements OnInit {
       this.isLogged = true;
     }
     
-    // this.route.data.subscribe((m:any) => {
-    //   this.products = m.resolveProducts;
-    // })
+    this.route.data.subscribe((m:any) => {
+      this.filteredProducts = m.resolveProducts;
+    })
   }
 
   search() {

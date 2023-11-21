@@ -4,9 +4,8 @@ import { ProductsService } from '../service/products.service';
 import { catchError, of } from 'rxjs';
 
 export const productsResolver: ResolveFn<boolean> = (route, state) => {
-  // const productService = inject(ProductsService);
-  // return productService.getProducts().pipe(catchError((err)=> {
-  //   return of(err);
-  // }))
-  return false;
+  const productService = inject(ProductsService);
+  return productService.getProducts().pipe(catchError((err)=> {
+    return of(err);
+  }))
 };
