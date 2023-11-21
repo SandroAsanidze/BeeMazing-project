@@ -1,16 +1,15 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from './service/products.service';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { CartService } from '../cart/service/cart.service';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { json } from 'node:stream/consumers';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule,HttpClientModule,ReactiveFormsModule,RouterModule],
+  imports: [CommonModule,HttpClientModule,ReactiveFormsModule,RouterModule,FormsModule],
   providers:[ProductsService,HttpClient],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
@@ -26,22 +25,49 @@ export class ProductsComponent implements OnInit {
     private productService:ProductsService, 
     public cdr:ChangeDetectorRef,
     private cartService:CartService,
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
+    private route:ActivatedRoute
   ){}
+
+  filteredProducts:any[]=[];
+  searchTerm:string ='';
+  selectedCategory: string='';
+  
   ngOnInit(): void {
     this.productService.getProducts().subscribe(data => {
       this.products = data;
+      this.filteredProducts = data;
 
       this.products.forEach((a:any) => {
         Object.assign(a,{quantity:1,total:a.price})
       })
     })
-
+    
     const isLogged = localStorage.getItem('isLogged');
     if(isLogged === 'true'){
       this.isLogged = true;
     }
+    
+    // this.route.data.subscribe((m:any) => {
+    //   this.products = m.resolveProducts;
+    // })
+  }
 
+  search() {
+    this.filterProducts();
+  }
+
+  filterByCategory() {
+    this.filterProducts();
+  }
+
+  private filterProducts() {
+      this.filteredProducts = this.products.filter(product => {
+          const matchesSearchTerm = !this.searchTerm || product.title.toLowerCase().includes(this.searchTerm.toLowerCase());
+          const matchesCategory = !this.selectedCategory || product.category === this.selectedCategory;
+
+          return matchesSearchTerm && matchesCategory;
+      });
   }
 
   public paymentForm = this.formBuilder.group({
@@ -63,7 +89,7 @@ export class ProductsComponent implements OnInit {
   onePageData() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-    return this.products.slice(startIndex, endIndex);
+    return this.filteredProducts.slice(startIndex, endIndex);
   }
 
   previousPage() {
@@ -79,7 +105,7 @@ export class ProductsComponent implements OnInit {
   }
 
   get totalPages():number {
-    this.totalItems = this.products.length;
+    this.totalItems = this.filteredProducts.length;
     return Math.ceil(this.totalItems / this.itemsPerPage);
   }
 
@@ -90,6 +116,8 @@ export class ProductsComponent implements OnInit {
     }
     return pages;
   }
+
+
 
   scrollToTop() {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });

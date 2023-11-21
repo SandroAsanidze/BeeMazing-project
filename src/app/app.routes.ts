@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard, authGuard1 } from './auth/guards/auth.guard';
+import { productsResolver } from './products/resolver/products.resolver';
 
 export const routes: Routes = [
     {
@@ -9,7 +10,10 @@ export const routes: Routes = [
     },
     {
         path:'products',
-        loadComponent: () => import('./products/products.component').then(c => c.ProductsComponent)
+        loadComponent: () => import('./products/products.component').then(c => c.ProductsComponent),
+        resolve: {
+            resolveProducts:productsResolver
+        }
     },
     {
         path:'products/:id',
