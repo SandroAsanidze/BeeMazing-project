@@ -1,0 +1,51 @@
+<div class="modal" id="buyModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="container p-0">
+            <div class="card px-4">
+                <p class="h8 py-3 details">Payment Details:</p>
+                <hr>
+                <div class="row gx-3">
+                    <form [formGroup]="paymentForm" (ngSubmit)="Submit()">
+                        <div class="col-12">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">Person Name</p>
+                                <input class="form-control mb-3" type="text" formControlName="name">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">Card Number</p>
+                                <input class="form-control mb-3" type="text" placeholder="1234 5678 435678" formControlName="cardNumber">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">Expiry</p>
+                                <input class="form-control mb-3" type="text" placeholder="MM/YYYY" formControlName="expiry">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex flex-column">
+                                <p class="text mb-1">CVV/CVC</p>
+                                <input class="form-control mb-3 pt-2 " type="password" placeholder="***" formControlName="cvc">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="btn btn-primary mb-3">
+                                <button data-bs-dismiss="modal" class="btn bnt-primary pay-button" [disabled]="paymentForm.invalid">Pay</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

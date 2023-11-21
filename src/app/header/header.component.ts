@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../auth/service/auth.service';
@@ -15,24 +15,41 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
+
+  @HostListener('document:click',['$event'])
+  onClick(event:any){
+    const el = document.querySelector('.dropdown-container');
+    
+    if((event.target as HTMLElement).classList.contains('dropdown')) {
+      this.showDropdown = false;
+    }
+    else {
+      if(el && !el.contains(event.target as Node) && this.showDropdown) {
+        this.showDropdown = false;
+      }
+    }
+  }
+
+
     constructor(
       private router:Router,
       public authService:AuthService,
       public productService:ProductsService,
       public cartService:CartService,
-      private formBuilder:FormBuilder
+      private formBuilder:FormBuilder,
+      private cdr:ChangeDetectorRef
     ){}
     name:string ='';
     id:string='';
     totalItem : number = 0;
     ngOnInit(): void {
-      this.name = localStorage.getItem('name') || '';
       this.id = localStorage.getItem('id') || '';
-
+      this.name = localStorage.getItem('name') || '';
+      this.cdr.markForCheck();
+      
       this.cartService.getProducts().subscribe(data => {
         this.totalItem = data.length;
       })     
-      
     }
 
     public checkIsLogged() {
@@ -44,15 +61,18 @@ export class HeaderComponent implements OnInit {
       }
     }
 
+    loading: boolean = false;
     public logOut(){
-        const confirmation = confirm(`Are you sure you want to log out ${localStorage.getItem('name')}?`);
-        if (confirmation) {
-          this.scrollToTop();
-          this.router.navigate(['home'])
+        this.loading = true;
+        this.showDropdown = false;
+        setTimeout(() => {
           localStorage.removeItem('isLogged');
           localStorage.removeItem('name');
           localStorage.removeItem('id');
-        }
+          this.scrollToTop();
+          this.router.navigate(['home'])
+          this.loading = false;
+        }, 2000);
     }
 
     showDropdown:boolean = false;
@@ -75,7 +95,9 @@ export class HeaderComponent implements OnInit {
 
     scrollToBottom() {
       this.router.navigate(['home']);
-      window.scroll({ top: 1000, left: 0, behavior: 'smooth' });
+      setTimeout(() => {
+        window.scroll({ top: 1000, left: 0, behavior: 'smooth' });
+      }, 50);
     }
     scrollToTop() {
       window.scroll({ top: 0, left: 0, behavior: 'smooth' });

@@ -1,3 +1,6 @@
+<div *ngIf="loading" class="loading">
+  <i class="fas fa-spinner fa-spin"></i> Loading...
+</div>
 <div class="header">
     <div class="logo">
         <i (click)="scrollToTop()" routerLink="home" class="fa-solid fa-dice-d20"></i>
@@ -6,7 +9,7 @@
     <div class="navigation nav-body">
         <nav class="navv" [ngClass]="{'navv_true': isExpanded$ === true }">
             <ul class="nav-ul" [ngClass]="{'is_expanded': isExpanded$ === true }">
-                <li routerLink="products">Products</li>
+                <li routerLink="products" (click)="scrollToTop()">Products</li>
                 <li (click)="scrollToBottom()">Blog</li>
                 <li routerLink="help">Help</li>
                 <div class="cart" *ngIf="checkIsLogged()">
@@ -59,7 +62,7 @@
             </div>
           </div>
 
-          <p class="text-danger" *ngIf="warningMessage">{{warningMessage}}</p>
+          <p class="text-danger"  style="margin-bottom: 30px;" *ngIf="warningMessage">{{warningMessage}}</p>
             
           <button type="submit" data-bs-dismiss="modal">Log In</button>
           <button (click)="createAcc()" data-bs-dismiss="modal" class="create-acc">Create new account</button>

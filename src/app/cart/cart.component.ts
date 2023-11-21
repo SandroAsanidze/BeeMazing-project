@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { CartService } from './service/cart.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { PaymentComponent } from '../payment/payment.component';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule,ReactiveFormsModule,PaymentComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
@@ -35,33 +36,11 @@ export class CartComponent implements OnInit {
   returnToShop() {
     this.router.navigate(['products']);
   }
-
-
-  public paymentForm = this.formBuilder.group({
-    name:['',[Validators.required,Validators.pattern('^[a-zA-Z]+$')]],
-    cardNumber:['',[Validators.required]],
-    expiry:['',[Validators.required]],
-    cvc:['',[Validators.required]]
-  })
-
-  Submit() {
-    this.paymentForm.reset();
-    this.emptyCart();
-    const alertion = alert('Successfull Payment');
-  }
-
+  
   openModal(){
     const modelDiv = document.getElementById('buyModal');
     if(modelDiv != null) {
       modelDiv.style.display = 'block';
     }
   }
-
-  closeModal(){
-    const modelDiv = document.getElementById('buyModal');
-    if(modelDiv != null) {
-      modelDiv.style.display = 'none';
-    }
-  }
-
 }
