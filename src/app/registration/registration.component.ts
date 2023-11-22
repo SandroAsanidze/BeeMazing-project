@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/service/auth.service';
 
@@ -20,8 +20,20 @@ export class RegistrationComponent {
       lastName:['',Validators.required],
       email:['',[Validators.required,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
       password:['',Validators.required],
+      confirmPassword:['',Validators.required],
       dob: ['', Validators.required]
-    })
+    }, { validator: this.passwordMatchValidator })
+
+    passwordMatchValidator(control: AbstractControl): { [key: string]: boolean } | null {
+      const password = control.get('password')!;
+      const confirmPassword = control.get('confirmPassword')!;
+  
+      if (password.value !== confirmPassword.value) {
+        return { 'passwordMismatch': true };
+      }
+  
+      return null;
+    }
 
     public addCustomer(info:any) {
       this.authService.addCustomer(info).subscribe()

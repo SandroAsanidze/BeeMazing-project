@@ -33,6 +33,17 @@
           Password is required
         </div>
       </div>
+
+      <div>
+        <label for="password">Confirm Password:</label>
+        <input type="password" id="confirmPassword" formControlName="confirmPassword">
+        <div *ngIf="registrationForm.get('confirmPassword')?.invalid && registrationForm.get('confirmPassword')?.touched">
+          Confirm Password is required
+        </div>
+        <div *ngIf="registrationForm.hasError('passwordMismatch') && (registrationForm.get('password')?.touched || registrationForm.get('confirmPassword')?.touched)">
+          Passwords do not match
+        </div>
+      </div>
     
       <div>
         <label for="dob">Date of Birth:</label>
