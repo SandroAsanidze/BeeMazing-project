@@ -58,4 +58,10 @@ export class RegistrationComponent {
       this.authService.hideEverything = false;
       this.router.navigate(['home']);
     }
+
+    showPassword = false;
+
+    changeType() {
+      this.showPassword = !this.showPassword;
+    }
 }

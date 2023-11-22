@@ -28,7 +28,11 @@
     
       <div>
         <label for="password">Password:</label>
-        <input type="password" id="password" formControlName="password">
+        <div class="password-field">
+          <input type="{{ showPassword ? 'text' : 'password' }}" id="password" formControlName="password">
+          <i *ngIf="!showPassword" class="fa-solid fa-eye" (click)="changeType()"></i>
+          <i *ngIf="showPassword" class="fa-solid fa-eye-slash" (click)="changeType()"></i>
+        </div>
         <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched">
           Password is required
         </div>
@@ -36,7 +40,11 @@
 
       <div>
         <label for="password">Confirm Password:</label>
-        <input type="password" id="confirmPassword" formControlName="confirmPassword">
+        <div class="password-field">
+          <input type="{{ showPassword ? 'text' : 'password' }}" id="confirmPassword" formControlName="confirmPassword">
+          <i *ngIf="!showPassword" class="fa-solid fa-eye" (click)="changeType()"></i>
+          <i *ngIf="showPassword" class="fa-solid fa-eye-slash" (click)="changeType()"></i>
+        </div>
         <div *ngIf="registrationForm.get('confirmPassword')?.invalid && registrationForm.get('confirmPassword')?.touched">
           Confirm Password is required
         </div>
