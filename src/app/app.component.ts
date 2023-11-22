@@ -21,11 +21,26 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe(() => {
       const currentPath = this.router.url;
 
+      const route = this.router.url;
+      const segments = route.split('/');
+      const id = Number(segments[segments.length - 1]);
+
       if(currentPath === '/registration') {
         this.authService.hideEverything = true;
       }
       else {
         this.authService.hideEverything = false;
+      }
+
+
+      if (
+        currentPath !== '/home' &&
+        currentPath !== '/products' &&
+        currentPath !== '/cart' &&
+        currentPath !== '/help' &&
+        currentPath !== `/products/${id}`
+      ) {
+        this.authService.hideEverything = true;
       }
   });
   }

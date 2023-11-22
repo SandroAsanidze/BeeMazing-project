@@ -40,5 +40,9 @@ export const routes: Routes = [
     {
         path:'help',
         loadComponent: () => import('./feedback/feedback.component').then(c => c.FeedbackComponent),
+    },
+    {
+        path:'**',
+        loadComponent: () => import('./error/error.component').then(c => c.ErrorComponent)
     }
 ];
