@@ -135,7 +135,9 @@ export class HeaderComponent implements OnInit {
               localStorage.setItem('name',item.firstName);
               localStorage.setItem('id',item.id);
               this.router.navigate(['home']);
+              this.loginForm.reset();
               this.scrollToTop();
+              this.warningMessage = '';
             }
             else {
               this.warningMessage = 'Invalid Email or Password';

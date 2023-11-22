@@ -31,15 +31,14 @@ export class AppComponent implements OnInit {
       else {
         this.authService.hideEverything = false;
       }
-
-
+      
       if (
         currentPath !== '/home' &&
         currentPath !== '/products' &&
         currentPath !== '/cart' &&
         currentPath !== '/help' &&
         currentPath !== `/products/${id}`
-      ) {
+      ){
         this.authService.hideEverything = true;
       }
   });
