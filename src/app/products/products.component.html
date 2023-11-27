@@ -1,15 +1,16 @@
-<div class="filter">
-    <select [(ngModel)]="selectedCategory" (change)="filterByCategory()">
-        <option value="">All Categories</option>
-        <option value="men's clothing">Men's Clothing</option>
-        <option value="women's clothing">Women's Clothing</option>
-        <option value="electronics">Electronics</option>
-        <option value="jewelery">Jewelry</option>
-    </select>
-    <h1 class="selected-category">{{ selectedCategory | titlecase }}</h1>
-    <h1 class="selected-category" *ngIf="!selectedCategory">All Categories</h1>
-</div>
-
+<div class= "container">
+    <div class="select">
+        <select [(ngModel)]="selectedCategory" (change)="filterByCategory()">
+            <option value="">All Categories</option>
+            <option value="men's clothing">Men's Clothing</option>
+            <option value="women's clothing">Women's Clothing</option>
+            <option value="electronics">Electronics</option>
+            <option value="jewelery">Jewelry</option>
+        </select>
+    </div>
+</div> 
+<h1 class="selected-category">{{ selectedCategory | titlecase }}</h1>
+<h1 class="selected-category" *ngIf="!selectedCategory">All Categories</h1>
 
 <div class="main-div">
     <div class="product-details" *ngFor="let product of onePageData()">

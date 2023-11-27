@@ -45,7 +45,6 @@ export class HeaderComponent implements OnInit {
     ngOnInit(): void {
       this.id = localStorage.getItem('id') || '';
       this.name = localStorage.getItem('name') || '';
-      this.cdr.markForCheck();
       
       this.cartService.getProducts().subscribe(data => {
         this.totalItem = data.length;
@@ -131,12 +130,16 @@ export class HeaderComponent implements OnInit {
         (data) => {
           data.forEach((item: { firstName:string;email: string; password: string;id:any }) => {
             if(this.loginForm.get('email')?.value === item.email && this.loginForm.get('password')?.value === item.password) {
+
               localStorage.setItem('isLogged','true');
               localStorage.setItem('name',item.firstName);
               localStorage.setItem('id',item.id);
-              this.router.navigate(['home']);
+
               this.loginForm.reset();
+              this.router.navigate(['home']);
+
               this.scrollToTop();
+              this.name = item.firstName;
               this.warningMessage = '';
             }
             else {

@@ -1,49 +1,57 @@
-.filter {
-  position: absolute;
-  top: 100px;
-  left: 50%;
-  transform: translateX(-50%);
+select {
+  appearance: none;
+  outline: 10px red;
+  border: 0;
+  box-shadow: none;
+  flex: 1;
+  padding: 0 1em;
+  color: #fff;
+  background-color: #303c54;
+  background-image: none;
+  cursor: pointer;
+}
+select::-ms-expand {
+  display: none;
+}
+.select {
+  position: relative;
+  top: 120px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  select {
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-    appearance: none;
-    margin-bottom: 30px;
-    &:hover {
-      border-color: #888;
-    }
-
-    &:focus {
-      outline: none;
-      border-color: #555;
-    }
-
-    option {
-      background-color: #fff;
-      color: #333;
-    }
-
-    option:checked {
-      background-color: #007bff;
-      color: #fff;
-    }
-  }
+  width: 20em;
+  height: 3em;
+  border-radius: .25em;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #234066;
+  transition: .25s all ease;
+  pointer-events: none;
+}
+.select:hover::after {
+  color: #f39c12;
+}
+.container {
+  width: 100%;
 }
 .selected-category {
+  position: absolute;
+  top: 200px;
+  left : 50%;
+  transform: translateX(-50%);
   font-size: 30px;
   color: white;
 }
+
 .main-div {
   font-family: 'Open Sans', sans-serif;
   font-family: 'Roboto', sans-serif;
-  padding-top: 230px;
+  padding-top: 250px;
   width: 80%;
   margin: 0 auto;
   display: flex;
