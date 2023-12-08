@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../auth/service/auth.service';
-import { ProductsService } from '../products/service/products.service';
-import { CartService } from '../cart/service/cart.service';
+import { AuthService } from '../../shared/services/auth-service/auth.service';
+import { ProductsService } from '../../shared/services/products-service/products.service';
+import { CartService } from '../../shared/services/cart-service/cart.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -64,6 +64,7 @@ export class HeaderComponent implements OnInit {
     public logOut(){
         this.loading = true;
         this.showDropdown = false;
+        this.warningMessage = '';
         setTimeout(() => {
           localStorage.removeItem('isLogged');
           localStorage.removeItem('name');

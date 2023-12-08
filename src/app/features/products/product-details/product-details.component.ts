@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductsService } from '../service/products.service';
+import { ProductsService } from '../../../shared/services/products-service/products.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaymentComponent } from '../../payment/payment.component';

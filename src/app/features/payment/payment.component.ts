@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CartService } from '../cart/service/cart.service';
+import { CartService } from '../../shared/services/cart-service/cart.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({

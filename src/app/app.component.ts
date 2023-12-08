@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { AuthService } from './auth/service/auth.service';
+import { HeaderComponent } from './features/header/header.component';
+import { FooterComponent } from './features/footer/footer.component';
+import { AuthService } from './shared/services/auth-service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({

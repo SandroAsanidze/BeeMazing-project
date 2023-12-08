@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductsService } from './service/products.service';
+import { ProductsService } from '../../shared/services/products-service/products.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
-import { CartService } from '../cart/service/cart.service';
+import { CartService } from '../../shared/services/cart-service/cart.service';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
