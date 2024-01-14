@@ -213,6 +213,12 @@ select::-ms-expand {
   }
 }
 
+@media (max-width:440px) {
+  .select {
+    width: 80%;
+  }
+}
+
 .productTitle {
   font-weight: bold;
   font-size: 16px;

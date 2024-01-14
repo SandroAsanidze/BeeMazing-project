@@ -30,7 +30,6 @@ export class ProductsComponent implements OnInit {
   ){}
 
   filteredProducts:any[]=[];
-  searchTerm:string ='';
   selectedCategory: string='';
   
   ngOnInit(): void {
@@ -64,10 +63,8 @@ export class ProductsComponent implements OnInit {
 
   private filterProducts() {
       this.filteredProducts = this.products.filter(product => {
-          const matchesSearchTerm = !this.searchTerm || product.title.toLowerCase().includes(this.searchTerm.toLowerCase());
           const matchesCategory = !this.selectedCategory || product.category === this.selectedCategory;
-
-          return matchesSearchTerm && matchesCategory;
+          return matchesCategory;
       });
   }
 
