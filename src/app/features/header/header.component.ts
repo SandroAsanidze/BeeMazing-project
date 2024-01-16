@@ -14,7 +14,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit  {
 
   @HostListener('document:click',['$event'])
   onClick(event:any){
@@ -30,7 +30,13 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  
+  isScrolled = false;
 
+  @HostListener('window:scroll', ['$event'])
+  onScroll(): void {
+    this.isScrolled = window.scrollY > 0;
+  }
     constructor(
       private router:Router,
       public authService:AuthService,
@@ -48,7 +54,8 @@ export class HeaderComponent implements OnInit {
       
       this.cartService.getProducts().subscribe(data => {
         this.totalItem = data.length;
-      })     
+      });
+      
     }
 
     public checkIsLogged() {
@@ -169,4 +176,5 @@ export class HeaderComponent implements OnInit {
   changeType() {
     this.showPassword = !this.showPassword;
   }
+
 }

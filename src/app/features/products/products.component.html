@@ -32,8 +32,8 @@
 </div>
 
 <div class="pagination-div">
-    <ul class="pagination" *ngFor="let page of pageNumbers">
-        <li><a (click)="currentPage = page" [class.active]="currentPage === page" (click)="scrollToTop()">{{page}}</a></li>
+    <ul class="pagination">
+        <li *ngFor="let page of pageNumbers"><a *ngIf="totalPages!==1" (click)="currentPage = page" [class.active]="currentPage === page" (click)="scrollToTop()">{{page}}</a></li>
     </ul>
 </div>
 

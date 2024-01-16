@@ -22,12 +22,7 @@
 <div class="slider">
     <h1>We've Top <span>Brands</span></h1>
     <div class="slider-div">
-        <img class="img-slider" src="../../assets/slider/free-adidas-logo-icon.svg" alt="adidas">
-        <img class="img-slider" src="../../assets/slider/gucci.svg" alt="gucci">
-        <img class="img-slider" src="../../assets/slider/ecco.svg" alt="ecco">
-        <img class="img-slider" src="../../assets/slider/jordan.svg" alt="jordan">
-        <img class="img-slider" src="../../assets/slider/puma.svg" alt="adidas">
-        <img class="img-slider" src="../../assets/slider/louis-vuitton.svg" alt="louis-vuitton">
+        <img *ngFor="let brand of brands" class="img-slider" [src]="brand.imageUrl" [alt]="brand.altText">
     </div>
 </div>
 

@@ -1,7 +1,7 @@
 <div *ngIf="loading" class="loading">
   <i class="fas fa-spinner fa-spin"></i> Loading...
 </div>
-<div class="header">
+<div class="header" [ngClass]="{'scrolled': isScrolled}">
     <div class="logo">
         <i (click)="scrollToTop()" routerLink="home" class="fa-solid fa-dice-d20"></i>
         <h2 (click)="scrollToTop()"  routerLink="home">Bee<span>Mazing</span></h2>
@@ -54,8 +54,8 @@
             <label for="password">Password:</label>
             <div class="password-field">
               <input type="{{ showPassword ? 'text' : 'password' }}" id="password" formControlName="password">
-              <i *ngIf="!showPassword" class="fa-solid fa-eye" (click)="changeType()"></i>
-              <i *ngIf="showPassword" class="fa-solid fa-eye-slash" (click)="changeType()"></i>
+              <i *ngIf="showPassword" class="fa-solid fa-eye" (click)="changeType()"></i>
+              <i *ngIf="!showPassword" class="fa-solid fa-eye-slash" (click)="changeType()"></i>
             </div>
             <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
               Password is required
