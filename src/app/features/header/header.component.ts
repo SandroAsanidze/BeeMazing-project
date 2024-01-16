@@ -52,10 +52,9 @@ export class HeaderComponent implements OnInit  {
       this.id = localStorage.getItem('id') || '';
       this.name = localStorage.getItem('name') || '';
       
-      this.cartService.getProducts().subscribe(data => {
-        this.totalItem = data.length;
+      this.cartService.getProducts().subscribe(products => {
+        this.totalItem = products.length;
       });
-      
     }
 
     public checkIsLogged() {

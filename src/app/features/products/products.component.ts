@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from '../../shared/services/products-service/products.service';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { CartService } from '../../shared/services/cart-service/cart.service';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -26,7 +26,8 @@ export class ProductsComponent implements OnInit {
     public cdr:ChangeDetectorRef,
     private cartService:CartService,
     private formBuilder:FormBuilder,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private router:Router
   ){}
 
   filteredProducts:any[]=[];
@@ -121,12 +122,16 @@ export class ProductsComponent implements OnInit {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
   }
 
+  items:any[]=[];
+
   addToCart(product:any) {
     if(localStorage.getItem('isLogged')) {
       this.cartService.addToCart(product);
     }
     else {
-      const information = alert('You must be logged into your account');
+      alert('Log In');
+      this.scrollToTop();
+      this.router.navigate(['/home']);
     }
   }
   productTitle:string ='';
