@@ -17,6 +17,10 @@ export class AuthService {
     return this.http.get<any>(this._url);
   }
 
+  public getSingleCustomer(id:number):Observable<any> {
+    return this.http.get<any>(`${this._url}/${id}`);
+  }
+
   public addCustomer(info:any):Observable<any> {
     return this.http.post<any>(this._url,info)
   }

@@ -1,5 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { AuthService } from '../auth-service/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class CartService {
 
   public cartItemList: any[] = JSON.parse(localStorage.getItem('items') || '[]');
   public productList = new BehaviorSubject<any>(this.cartItemList);
-  constructor() { }
+  constructor(private authService:AuthService) { }
 
   getProducts(){
     return this.productList.asObservable();
@@ -20,12 +21,13 @@ export class CartService {
 
   addToCart(product : any) {
     const findId = this.cartItemList.find((i) => i.id === product.id)
+    
     if(findId) {
       product.quantity++;
     }
     else {
       this.cartItemList.push(product);
-      localStorage.setItem('items',JSON.stringify(this.cartItemList))
+      localStorage.setItem('cart',JSON.stringify(this.cartItemList))
       this.productList.next([...this.cartItemList]);
 
       this.getTotalPrice();
@@ -47,7 +49,7 @@ export class CartService {
     
     if(product) {
       product.quantity++;
-      localStorage.setItem('items',JSON.stringify(this.cartItemList))
+      localStorage.setItem('cart',JSON.stringify(this.cartItemList))
       this.productList.next([...this.cartItemList]);
     }
   }
@@ -57,7 +59,7 @@ export class CartService {
     
     if(product && product.quantity > 1) {
       product.quantity--;
-      localStorage.setItem('items',JSON.stringify(this.cartItemList))
+      localStorage.setItem('cart',JSON.stringify(this.cartItemList))
       this.productList.next([...this.cartItemList]);
     }
   }
@@ -67,7 +69,7 @@ export class CartService {
     this.cartItemList.map((a:any,index:any) => {
       if(product.id === a.id) {
         this.cartItemList.splice(index,1);
-        localStorage.setItem('items',JSON.stringify(this.cartItemList))
+        localStorage.setItem('cart',JSON.stringify(this.cartItemList))
         this.productList.next([...this.cartItemList]);
       }
     })
@@ -75,7 +77,7 @@ export class CartService {
 
   removeAllCart() {
     this.cartItemList = [];
-    localStorage.setItem('items','[]')
+    localStorage.setItem('cart','[]')
     this.productList.next([...this.cartItemList]);
   }
 }

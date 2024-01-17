@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { CartService } from '../../shared/services/cart-service/cart.service';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../shared/services/auth-service/auth.service';
 
 @Component({
   selector: 'app-products',
@@ -27,7 +28,8 @@ export class ProductsComponent implements OnInit {
     private cartService:CartService,
     private formBuilder:FormBuilder,
     private route:ActivatedRoute,
-    private router:Router
+    private router:Router,
+    private authService:AuthService
   ){}
 
   filteredProducts:any[]=[];
@@ -51,6 +53,7 @@ export class ProductsComponent implements OnInit {
     this.route.data.subscribe((m:any) => {
       this.filteredProducts = m.resolveProducts;
     })
+
   }
 
   search() {
