@@ -9,9 +9,8 @@ import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes), 
-    provideClientHydration(), 
     provideAnimations(),
     importProvidersFrom(HttpClientModule),
-    provideHttpClient(withInterceptors([]))
+    provideHttpClient(withInterceptors([])),
   ]
 };
