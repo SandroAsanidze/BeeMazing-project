@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../shared/services/cart-service/cart.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CartComponent } from '../cart/cart.component';
 
 @Component({
   selector: 'app-payment',
@@ -12,7 +13,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 })
 export class PaymentComponent implements OnInit {
 
-  constructor(private cartService:CartService,private formBuilder:FormBuilder){}
+  constructor(private cartService:CartService,private formBuilder:FormBuilder,private cartComponent:CartComponent){}
   ngOnInit(): void {}
   
   public paymentForm = this.formBuilder.group({
@@ -23,6 +24,7 @@ export class PaymentComponent implements OnInit {
   })
 
   emptyCart() {
+    this.cartComponent.products=[];
     this.cartService.removeAllCart();
   }
 

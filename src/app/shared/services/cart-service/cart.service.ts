@@ -5,11 +5,13 @@ import { AuthService } from '../auth-service/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
+export class CartService implements OnInit {
 
-  public cartItemList: any[] = JSON.parse(localStorage.getItem('items') || '[]');
+  public cartItemList: any[] = JSON.parse(localStorage.getItem('cart') || '[]');
   public productList = new BehaviorSubject<any>(this.cartItemList);
   constructor(private authService:AuthService) { }
+
+  ngOnInit(): void {}
 
   getProducts(){
     return this.productList.asObservable();
@@ -21,6 +23,7 @@ export class CartService {
 
   addToCart(product : any) {
     const findId = this.cartItemList.find((i) => i.id === product.id)
+    const findCustomerId = localStorage.getItem('id');
     
     if(findId) {
       product.quantity++;

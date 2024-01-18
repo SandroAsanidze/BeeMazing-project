@@ -46,6 +46,7 @@ export class ProductsComponent implements OnInit {
     })
     
     const isLogged = localStorage.getItem('isLogged');
+
     if(isLogged === 'true'){
       this.isLogged = true;
     }
@@ -53,7 +54,6 @@ export class ProductsComponent implements OnInit {
     this.route.data.subscribe((m:any) => {
       this.filteredProducts = m.resolveProducts;
     })
-
   }
 
   search() {

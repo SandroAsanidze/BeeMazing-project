@@ -5,6 +5,7 @@ import { HeaderComponent } from './features/header/header.component';
 import { FooterComponent } from './features/footer/footer.component';
 import { AuthService } from './shared/services/auth-service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CartService } from './shared/services/cart-service/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,10 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private router:Router,public authService:AuthService){}
+  constructor(
+    private router:Router,
+    public authService:AuthService,
+    ){}
 
   ngOnInit(): void {
     this.router.events.subscribe(() => {

@@ -22,7 +22,6 @@
             <p class="product-description">{{product.description | slice: 0: 100}}...</p>
             <a [routerLink]= "[product.id]" class="see-more">See more...</a>
             <p class="product-price">{{product.price}} $</p>
-            <p class="product-count">Count: {{product.rating.count}}</p>
             <div class="btn-div">
                 <button (click)="addToCart(product)" class="cart-btn">Add to Cart</button>
                 <button class="buy-btn" (click)="openModal(product)" [disabled]="isLogged===false" data-bs-toggle="modal" data-bs-target="#buyModal">Buy Now</button>

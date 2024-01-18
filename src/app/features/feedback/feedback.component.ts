@@ -11,9 +11,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 })
 export class FeedbackComponent implements OnInit {
   constructor(private formBuilder:FormBuilder){}
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   public feedbackForm = this.formBuilder.group({
     email:['',[Validators.required,Validators.email]],
@@ -27,7 +25,6 @@ export class FeedbackComponent implements OnInit {
   })
 
   Submit() {
-    console.log(this.feedbackForm.value);
     this.feedbackForm.reset();
   }
 }

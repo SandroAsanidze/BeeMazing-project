@@ -1,4 +1,4 @@
-<div class="container px-3 my-5 clearfix cart" *ngIf="products.length != 0">
+<div class="container clearfix cart" *ngIf="products.length != 0">
   <div class="card">
       <div class="card-header">
           <h2>Shopping Cart</h2>
@@ -11,10 +11,10 @@
               <p><span class="span-title">Product name &amp; Details:</span> {{product.title}}</p>
             </div>
             <p class="price"><span style="color: rgb(255, 0, 0);">Price</span> {{product.price}} $</p>
-            <div style="display: flex;">
+            <div class="quantity-div">
+              <div (click)="decrementQuantity(product.id)" class="quantity-btn"><i class="fa-solid fa-minus"></i></div>
               <p><span style="color: rgb(255, 0, 0);">Quantity:</span> {{product.quantity}}</p>
-              <button (click)="incrementQuantity(product.id)" style="margin-left: 10px;margin-right: 10px;">+</button>
-              <button (click)="decrementQuantity(product.id)">-</button>
+              <div (click)="incrementQuantity(product.id)" class="quantity-btn"><i class="fa-solid fa-plus"></i></div>
             </div>
             <i (click)="removeProduct(product)" style="cursor: pointer;color: rgb(255, 0, 0);" class="fa-regular fa-trash-can"></i>
           </div>
@@ -24,7 +24,7 @@
             <button (click)="emptyCart()">Empty Cart</button>
             <button class="shop-more" (click)="returnToShop()">Shop More</button>
             <button class="shop-more" (click)="openModal()" data-bs-toggle="modal" data-bs-target="#buyModal">Pay</button>
-            <h2 style="color: black;">Total Price: {{ totalPrice() | number: '1.2-2' }} $</h2>
+            <h2 style="color: black;margin-top: 30px;">Total Price: {{ totalPrice() | number: '1.2-2' }} $</h2>
           </div>
         </div>
     </div>

@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../shared/services/cart-service/cart.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PaymentComponent } from '../payment/payment.component';
-import { json } from 'stream/consumers';
 
 
 @Component({
@@ -17,7 +16,7 @@ import { json } from 'stream/consumers';
 export class CartComponent implements OnInit {
   products: any[]=[];
 
-  constructor(private cartService:CartService,private router:Router,private formBuilder:FormBuilder){}
+  constructor(private cartService:CartService,private router:Router){}
 
   ngOnInit(): void {
     this.products = this.cartService.cartItemList;
