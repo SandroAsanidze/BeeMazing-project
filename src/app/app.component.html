@@ -1,3 +1,7 @@
 <app-header *ngIf="!authService.hideEverything"></app-header>
 <router-outlet></router-outlet>
 <app-footer *ngIf="!authService.hideEverything"></app-footer>
+
+<div *ngIf="hideBtn " (click)="scrollToTop()" class="scroll-up">
+    <i class="fa-solid fa-up-long"></i>
+</div>

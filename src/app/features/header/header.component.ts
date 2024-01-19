@@ -78,6 +78,8 @@ export class HeaderComponent implements OnInit  {
           this.scrollToTop();
           this.router.navigate(['home'])
           this.loading = false;
+          this.cartService.removeAllCart();
+          this.cartService.cartItemList=[];
         }, 2000);
     }
 

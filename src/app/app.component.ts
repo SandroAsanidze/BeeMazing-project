@@ -19,7 +19,10 @@ export class AppComponent implements OnInit {
   constructor(
     private router:Router,
     public authService:AuthService,
+    protected cartService:CartService
     ){}
+
+  hideBtn:boolean=false;
 
   ngOnInit(): void {
     this.router.events.subscribe(() => {
@@ -45,7 +48,18 @@ export class AppComponent implements OnInit {
       ){
         this.authService.hideEverything = true;
       }
+
+      if(currentPath === '/help' || currentPath === '/cart'){
+        this.hideBtn = false;
+      }
+      else {
+        this.hideBtn = true;
+      }
   });
   }
   title = 'bee_mazing';
+
+  scrollToTop() {
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+  }
 }

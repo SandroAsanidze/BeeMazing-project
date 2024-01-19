@@ -1,7 +1,7 @@
 <div *ngIf="loading" class="loading">
   <i class="fas fa-spinner fa-spin"></i> Loading...
 </div>
-<div class="header" [ngClass]="{'scrolled': isScrolled}">
+<div class="header">
     <div class="logo">
         <i (click)="scrollToTop()" routerLink="home" class="fa-solid fa-dice-d20"></i>
         <h2 (click)="scrollToTop()"  routerLink="home">Bee<span>Mazing</span></h2>
@@ -13,7 +13,7 @@
                 <li (click)="scrollToBottom()">Blog</li>
                 <li routerLink="help">Help</li>
                 <div class="cart" *ngIf="checkIsLogged()">
-                    <li routerLink="cart"><i class="fa-solid fa-cart-shopping"></i></li>
+                    <li (click)="scrollToTop()" routerLink="cart"><i class="fa-solid fa-cart-shopping"></i></li>
                     <div class="cart-count">{{totalItem}}</div>
                 </div>
                 <div *ngIf="checkIsLogged()" class="dropdown-div">

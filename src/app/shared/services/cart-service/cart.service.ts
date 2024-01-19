@@ -23,14 +23,20 @@ export class CartService implements OnInit {
 
   addToCart(product : any) {
     const findId = this.cartItemList.find((i) => i.id === product.id)
-    const findCustomerId = localStorage.getItem('id');
     
     if(findId) {
       product.quantity++;
     }
     else {
+      const customerId = localStorage.getItem('id')
+
+      const obj = {
+        id:customerId,
+        cartList:this.cartItemList,
+      }
+
       this.cartItemList.push(product);
-      localStorage.setItem('cart',JSON.stringify(this.cartItemList))
+      localStorage.setItem('cart',JSON.stringify(obj))
       this.productList.next([...this.cartItemList]);
 
       this.getTotalPrice();
