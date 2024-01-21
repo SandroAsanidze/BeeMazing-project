@@ -5,6 +5,7 @@ import { AuthService } from '../../shared/services/auth-service/auth.service';
 import { ProductsService } from '../../shared/services/products-service/products.service';
 import { CartService } from '../../shared/services/cart-service/cart.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-header',
@@ -43,7 +44,8 @@ export class HeaderComponent implements OnInit  {
       public productService:ProductsService,
       public cartService:CartService,
       private formBuilder:FormBuilder,
-      private cdr:ChangeDetectorRef
+      private cdr:ChangeDetectorRef,
+      private cookie:CookieService
     ){}
     name:string ='';
     id:string='';

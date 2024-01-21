@@ -6,6 +6,7 @@ import { FooterComponent } from './features/footer/footer.component';
 import { AuthService } from './shared/services/auth-service/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CartService } from './shared/services/cart-service/cart.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -19,12 +20,23 @@ export class AppComponent implements OnInit {
   constructor(
     private router:Router,
     public authService:AuthService,
-    protected cartService:CartService
+    protected cartService:CartService,
+    private cookie:CookieService
     ){}
 
   hideBtn:boolean=false;
+  cookieBool:boolean=true;
+
+  Cookie() {
+    this.cookieBool=false;
+    this.cookie.set('UserDetail','BeeMazing');
+  }
 
   ngOnInit(): void {
+    if(this.cookie.get('UserDetail')) {
+      this.cookieBool=false;
+    }
+
     this.router.events.subscribe(() => {
       const currentPath = this.router.url;
 

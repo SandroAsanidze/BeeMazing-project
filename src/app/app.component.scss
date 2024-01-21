@@ -22,3 +22,51 @@
         height: 50px;
     }
 }
+
+.cookie-container {
+    width: 80%;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 30px;
+    background: linear-gradient(90deg, rgba(17,17,19,1) 0%, rgba(30,30,32,1) 0%, rgba(52,52,54,1) 70%, rgba(44,44,47,1) 100%);
+    color: #f5f6fa;
+    padding: 0 32px;
+    text-align: center;
+    -webkit-box-shadow: 0 -2px 16px rgba(47, 54, 64, 0.39);
+            box-shadow: 0 -2px 16px rgba(47, 54, 64, 0.39);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-transition: 400ms;
+    -o-transition: 400ms;
+    transition: 400ms;
+    p {
+        margin-top: 5px;
+        a {
+            color: #2f7486;
+        }
+    }
+    .active {
+        bottom: 0;
+    }
+    .cookie-btn {
+        background: #2f7486;
+        border: 0;
+        color: #f5f6fa;
+        padding: 7px 48px;
+        font-size: 18px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+} 
