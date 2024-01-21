@@ -8,6 +8,7 @@ import { AuthService } from '../auth-service/auth.service';
 export class CartService implements OnInit {
 
   public cartItemList: any[] = JSON.parse(localStorage.getItem('cart') || '[]');
+
   public productList = new BehaviorSubject<any>(this.cartItemList);
   constructor(private authService:AuthService) { }
 
@@ -28,15 +29,15 @@ export class CartService implements OnInit {
       product.quantity++;
     }
     else {
-      const customerId = localStorage.getItem('id')
+      // const customerId = localStorage.getItem('id')
 
-      const obj = {
-        id:customerId,
-        cartList:this.cartItemList,
-      }
+      // const obj = {
+      //   id:customerId,
+      //   cartList:this.cartItemList,
+      // }
 
       this.cartItemList.push(product);
-      localStorage.setItem('cart',JSON.stringify(obj))
+      localStorage.setItem('cart',JSON.stringify(this.cartItemList))
       this.productList.next([...this.cartItemList]);
 
       this.getTotalPrice();
