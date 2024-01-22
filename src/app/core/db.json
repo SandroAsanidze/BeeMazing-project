@@ -8,18 +8,11 @@
       "id": 1
     },
     {
-      "firstName": "nodari",
+      "firstName": "nodar",
       "lastName": "chachanidze",
       "email": "nodochacha9@gmail.com",
-      "password": "nodexnodex1",
+      "password": "12345",
       "id": 2
-    },
-    {
-      "firstName": "luka",
-      "lastName": "tchitadze",
-      "email": "chitadze.luka06@gmail.com",
-      "password": "chitadze123",
-      "id": 3
     }
   ],
   "products": [

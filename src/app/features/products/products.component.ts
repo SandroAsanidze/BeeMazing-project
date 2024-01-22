@@ -6,11 +6,13 @@ import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http'
 import { CartService } from '../../shared/services/cart-service/cart.service';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth-service/auth.service';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule,HttpClientModule,ReactiveFormsModule,RouterModule,FormsModule],
+  imports: [CommonModule,HttpClientModule,ReactiveFormsModule,RouterModule,FormsModule,SweetAlert2Module],
   providers:[ProductsService],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
@@ -80,7 +82,7 @@ export class ProductsComponent implements OnInit {
   })
 
   Submit() {
-    const alertion = alert('Successfull Payment');
+    Swal.fire("Awesome!","Successfull Payment.","success");
     this.paymentForm.reset();
   }
 

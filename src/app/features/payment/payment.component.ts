@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { CartService } from '../../shared/services/cart-service/cart.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CartComponent } from '../cart/cart.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-payment',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule,ReactiveFormsModule,SweetAlert2Module],
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.scss'
 })
@@ -28,10 +30,12 @@ export class PaymentComponent implements OnInit {
     this.cartService.removeAllCart();
   }
 
-  Submit() {
+  async Submit() {
     this.paymentForm.reset();
-    this.emptyCart();
-    const alertion = alert('Successfull Payment');
+    const swal = Swal.fire("Awesome!","Successfull Payment.","success")
+    if(await swal) {
+      this.emptyCart();
+    }
   }
 
   openModal(){

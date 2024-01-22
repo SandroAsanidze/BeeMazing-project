@@ -6,11 +6,13 @@ import { ProductsService } from '../../shared/services/products-service/products
 import { CartService } from '../../shared/services/cart-service/cart.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule,RouterModule,ReactiveFormsModule],
+  imports: [CommonModule,RouterModule,ReactiveFormsModule,SweetAlert2Module],
   providers:[ProductsService],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
