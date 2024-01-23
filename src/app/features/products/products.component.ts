@@ -131,10 +131,22 @@ export class ProductsComponent implements OnInit {
 
   addToCart(product:any) {
     if(localStorage.getItem('isLogged')) {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Your work has been saved",
+        showConfirmButton: false,
+        timer: 1500
+      });
       this.cartService.addToCart(product);
     }
     else {
-      alert('Log In');
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+        footer: 'Log In'
+      });
       this.scrollToTop();
       this.router.navigate(['/home']);
     }
