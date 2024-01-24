@@ -1,13 +1,12 @@
-import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../shared/services/auth-service/auth.service';
 import { ProductsService } from '../../shared/services/products-service/products.service';
 import { CartService } from '../../shared/services/cart-service/cart.service';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CookieService } from 'ngx-cookie-service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import Swal from 'sweetalert2';
+import { LoaderService } from '../../shared/services/loader-service/loader.service';
 
 @Component({
   selector: 'app-header',
@@ -46,8 +45,7 @@ export class HeaderComponent implements OnInit  {
       public productService:ProductsService,
       public cartService:CartService,
       private formBuilder:FormBuilder,
-      private cdr:ChangeDetectorRef,
-      private cookie:CookieService
+      // public loaderService:LoaderService
     ){}
     name:string ='';
     id:string='';

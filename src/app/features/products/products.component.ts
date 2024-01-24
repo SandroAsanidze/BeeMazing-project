@@ -2,10 +2,9 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from '../../shared/services/products-service/products.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
+import { HttpClientModule, HttpHandler } from '@angular/common/http';
 import { CartService } from '../../shared/services/cart-service/cart.service';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../../shared/services/auth-service/auth.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
 
@@ -30,10 +29,9 @@ export class ProductsComponent implements OnInit {
     private cartService:CartService,
     private formBuilder:FormBuilder,
     private route:ActivatedRoute,
-    private router:Router,
-    private authService:AuthService
+    private router:Router
   ){}
-
+  
   filteredProducts:any[]=[];
   selectedCategory: string='';
   
