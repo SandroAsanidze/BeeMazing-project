@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../shared/services/auth-service/auth.service';
@@ -14,7 +14,8 @@ import { LoaderService } from '../../shared/services/loader-service/loader.servi
   imports: [CommonModule,RouterModule,ReactiveFormsModule,SweetAlert2Module],
   providers:[ProductsService],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit  {
 
@@ -45,7 +46,7 @@ export class HeaderComponent implements OnInit  {
       public productService:ProductsService,
       public cartService:CartService,
       private formBuilder:FormBuilder,
-      // public loaderService:LoaderService
+      public loaderService:LoaderService
     ){}
     name:string ='';
     id:string='';
