@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from '../../shared/services/products-service/products.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -7,6 +7,7 @@ import { CartService } from '../../shared/services/cart-service/cart.service';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import Swal from 'sweetalert2';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -14,13 +15,15 @@ import Swal from 'sweetalert2';
   imports: [CommonModule,HttpClientModule,ReactiveFormsModule,RouterModule,FormsModule,SweetAlert2Module],
   providers:[ProductsService],
   templateUrl: './products.component.html',
-  styleUrl: './products.component.scss'
+  styleUrl: './products.component.scss',
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit,OnDestroy {
 
   products: any[]=[];
   errorMessage:string='';
   isLogged:boolean=false;
+  productSubscription:Subscription | undefined
 
 
   constructor(
@@ -36,7 +39,7 @@ export class ProductsComponent implements OnInit {
   selectedCategory: string='';
   
   ngOnInit(): void {
-    this.productService.getProducts().subscribe(data => {
+    this.productSubscription = this.productService.getProducts().subscribe(data => {
       this.products = data;
       this.filteredProducts = data;
       
@@ -46,7 +49,7 @@ export class ProductsComponent implements OnInit {
     })
     
     const isLogged = localStorage.getItem('isLogged');
-
+    
     if(isLogged === 'true'){
       this.isLogged = true;
     }
@@ -55,6 +58,12 @@ export class ProductsComponent implements OnInit {
       this.filteredProducts = m.resolveProducts;
     })
   }
+
+  ngOnDestroy(): void {
+    this.productSubscription?.unsubscribe();
+  }
+
+
 
   search() {
     this.filterProducts();
